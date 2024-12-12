@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { Book, Mail, MenuIcon, Search, X } from "lucide-react";
+import { Book, LibraryBig, Mail, MenuIcon, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -12,11 +12,15 @@ const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const pages = [
     {
-      name: "Search",
+      name: "Home",
       href: "/",
-      icon: <Search size={16} />,
+      icon: <LibraryBig size={16} />,
     },
     {
       name: "Contact",
@@ -26,7 +30,7 @@ const Menu = () => {
   ];
 
   return (
-    <div className="fixed left-0 top-0 z-10 h-16 w-full flex-row items-center justify-between border-b bg-background px-4">
+    <header className="fixed left-0 top-0 z-10 h-16 w-full flex-row items-center justify-between border-b bg-background px-4">
       <div className="flex h-full items-center justify-start gap-4 text-2xl">
         <Book />
         <Link href="/" className="font-bold">
@@ -54,7 +58,7 @@ const Menu = () => {
 
       <div
         className={cn(
-          `${isOpen ? "opacity-100" : "opacity-0"} height-full fixed left-0 top-16 z-10 flex h-full w-full flex-col items-center justify-start bg-background transition-all duration-200 sm:absolute sm:top-0 sm:flex-row sm:justify-end sm:bg-transparent sm:opacity-100`,
+          `height-full fixed left-0 top-16 z-50 flex h-full w-full scale-0 flex-col items-center justify-start bg-background transition-opacity duration-200 sm:absolute sm:top-0 sm:scale-100 sm:flex-row sm:justify-end sm:bg-transparent sm:opacity-100 ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} `,
         )}
       >
         <nav className="w-full max-w-72 py-10 sm:w-auto">
@@ -67,9 +71,9 @@ const Menu = () => {
                 )}
               >
                 <Link
-                  onClick={() => setIsOpen(false)}
                   href={page.href}
-                  className="flex w-full items-center gap-2 p-4 font-semibold transition-all duration-300 hover:text-primary"
+                  className="flex w-full items-center gap-2 p-4 font-semibold transition-all duration-300 hover:text-primary sm:pointer-events-auto"
+                  tabIndex={!isOpen ? -1 : undefined}
                 >
                   {page.icon}
                   {page.name}
@@ -83,7 +87,7 @@ const Menu = () => {
           <ThemeToggle />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
