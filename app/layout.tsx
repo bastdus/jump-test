@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import Menu from "@/components/Menu";
+import { TailwindIndicator } from "@/components/TailwindIndicator";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,8 +41,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ThemeToggle />
-          {children}
+          <Menu />
+          <div className="pt-16">{children}</div>
+          <TailwindIndicator />
         </ThemeProvider>
       </body>
     </html>
