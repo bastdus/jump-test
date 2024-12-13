@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const Menu = () => {
+export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -31,10 +31,10 @@ const Menu = () => {
 
   return (
     <header className="fixed left-0 top-0 z-10 h-16 w-full flex-row items-center justify-between border-b bg-background px-4">
-      <div className="flex h-full items-center justify-start gap-4 text-2xl">
+      <div className="flex h-full items-center justify-start gap-4 text-2xl text-primary">
         <Book />
         <Link href="/" className="font-bold">
-          Book
+          BookFinder
         </Link>
       </div>
 
@@ -90,5 +90,3 @@ const Menu = () => {
     </header>
   );
 };
-
-export default Menu;
