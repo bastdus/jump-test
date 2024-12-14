@@ -7,7 +7,6 @@ export const useBookSearch = (query: string, page: number) => {
   return useQuery({
     queryKey: ["books", query, page],
     queryFn: () => searchBooks(query, page),
-    enabled: query !== "" && page > 0,
     placeholderData: keepPreviousData,
     staleTime,
   });
