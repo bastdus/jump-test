@@ -39,8 +39,7 @@ export const BookCard = ({ book, delay = 0 }: BookCardProps) => {
         <AspectRatio ratio={2 / 3}>
           <Image
             className="object-cover"
-            // src={`${book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : "/images/no_cover.jpg"}`}
-            src="/images/no_cover.jpg"
+            src={`${book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : "/images/no_cover.jpg"}`}
             alt={`Cover of ${book.title}`}
             loading="lazy"
             fill
