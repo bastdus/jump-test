@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/provider/ThemeProvider";
 import { Menu } from "@/components/Menu";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { Footer } from "@/components/Footer";
+import ReactQueryProvider from "@/provider/ReactQueryProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,19 +37,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Menu />
-          <div className="mx-auto min-h-screen w-full max-w-7xl pt-16">
-            {children}
-          </div>
-          <Footer />
-          <TailwindIndicator />
-        </ThemeProvider>
+        <ReactQueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Menu />
+            <div className="mx-auto min-h-screen w-full max-w-7xl pt-16">
+              {children}
+            </div>
+            <Footer />
+            <TailwindIndicator />
+          </ThemeProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
