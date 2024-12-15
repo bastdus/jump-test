@@ -5,7 +5,13 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactNode } from "react";
 
 const ReactQueryProvider = ({ children }: { children: ReactNode }) => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 60 * 30, // 30 minutes
+      },
+    },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>

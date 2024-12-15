@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useBookSearch } from "@/hooks/use-book-search";
-import { ITEMS_PER_PAGE } from "@/lib/api";
+import { ITEMS_PER_PAGE } from "@/lib/queries";
 import { BookCard } from "@/components/BookCard";
 import { BookPagination } from "@/components/BookPagination";
 

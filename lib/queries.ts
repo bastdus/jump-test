@@ -3,6 +3,9 @@ import { SearchResponse } from "@/types/search";
 const API_BASE_URL = "https://openlibrary.org";
 export const ITEMS_PER_PAGE = 10;
 
+/**
+ * Use for searching books from OpenLibrary API
+ */
 export const searchBooks = async (query: string, page: number = 1) => {
   if (!query) return null;
 
