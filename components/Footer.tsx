@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
   return (
-    <footer className="mx-auto flex w-full justify-center border-t p-4">
-      <div className="grid grid-cols-2 gap-10">
+    <footer className="mx-auto mt-auto flex w-full justify-center border-t p-4">
+      <div className="grid w-full max-w-lg grid-cols-2 gap-10">
         <div>
           <p className="italic">Proposed by:</p>
           <Button asChild variant="link" className="pl-0">

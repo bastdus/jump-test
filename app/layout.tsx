@@ -6,6 +6,7 @@ import { Menu } from "@/components/Menu";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { Footer } from "@/components/Footer";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +36,7 @@ export default function RootLayout({
       suppressHydrationWarning={process.env.NODE_ENV === "production"}
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
       >
         <ReactQueryProvider>
           <ThemeProvider
@@ -45,10 +46,11 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Menu />
-            <div className="mx-auto min-h-screen w-full max-w-7xl pt-16">
+            <main className="container mx-auto w-full max-w-7xl px-4 pt-28">
               {children}
-            </div>
+            </main>
             <Footer />
+            <Toaster />
             <TailwindIndicator />
           </ThemeProvider>
         </ReactQueryProvider>
