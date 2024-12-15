@@ -36,7 +36,7 @@ export const BookCard = ({ book, delay = 0 }: BookCardProps) => {
       )}
     >
       <CardHeader className="p-0">
-        <AspectRatio ratio={2 / 3}>
+        <AspectRatio ratio={3 / 4}>
           <Image
             className="object-cover"
             src={`${book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : "/images/no_cover.jpg"}`}

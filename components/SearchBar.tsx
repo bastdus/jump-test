@@ -44,7 +44,7 @@ export const SearchBar = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
         <Button type="submit">
-          <Search className="sm:hidden" />
+          <Search />
           <span className="hidden font-bold sm:block">Search</span>
         </Button>
       </form>
