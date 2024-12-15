@@ -29,7 +29,7 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className="sticky top-16 w-full items-center bg-background px-4 pb-5 pt-4">
+    <div className="sticky top-16 z-10 w-full items-center bg-background px-4 pb-5 pt-4">
       <form
         onSubmit={handleSubmit}
         className="flex items-center justify-center gap-2"

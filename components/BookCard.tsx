@@ -32,7 +32,7 @@ export const BookCard = ({ book, delay = 0 }: BookCardProps) => {
   return (
     <Card
       className={cn(
-        `-z-10 flex h-full flex-col overflow-hidden transition-all duration-500 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`,
+        `flex h-full flex-col overflow-hidden transition-all duration-500 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`,
       )}
     >
       <CardHeader className="p-0">
@@ -56,8 +56,8 @@ export const BookCard = ({ book, delay = 0 }: BookCardProps) => {
         </p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button asChild className="w-full">
-          <Link href="/">Voir le livre</Link>
+        <Button asChild className="w-full font-bold">
+          <Link href={book.key}>Voir le livre</Link>
         </Button>
       </CardFooter>
     </Card>

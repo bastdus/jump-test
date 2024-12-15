@@ -1,6 +1,16 @@
+import { Book } from "@/types/book";
 import { SearchResponse } from "@/types/search";
 
 const API_BASE_URL = "https://openlibrary.org";
+
+const fieldList: (keyof Book)[] = [
+  "key",
+  "title",
+  "author_name",
+  "first_publish_year",
+  "cover_i",
+];
+
 export const ITEMS_PER_PAGE = 10;
 
 /**
@@ -13,7 +23,7 @@ export const searchBooks = async (query: string, page: number = 1) => {
 
   try {
     const response = await fetch(
-      `${API_BASE_URL}/search.json?q=${encodeURIComponent(query)}&limit=${ITEMS_PER_PAGE}&offset=${offset}`,
+      `${API_BASE_URL}/search.json?q=${encodeURIComponent(query)}&limit=${ITEMS_PER_PAGE}&offset=${offset}&fields=${fieldList.join(",")}`,
     );
 
     if (!response.ok) {
@@ -23,8 +33,29 @@ export const searchBooks = async (query: string, page: number = 1) => {
     }
 
     const data: SearchResponse = await response.json();
+
     return data;
   } catch (error) {
     throw new Error(`Error on 'searchBook' query: ${error}`);
+  }
+};
+
+/**
+ * Use for fetching book details from OpenLibrary API
+ */
+export const fetchBook = async (key: string) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/${key}.json`);
+
+    if (!response.ok) {
+      throw new Error(
+        `Http error on 'fetchBook' query. Status: ${response.status}`,
+      );
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(`Error on 'fetchBook' query: ${error}`);
   }
 };
