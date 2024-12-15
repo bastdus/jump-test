@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 import { ThemeProvider } from "@/provider/ThemeProvider";
 import { Menu } from "@/components/Menu";
-import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { Footer } from "@/components/Footer";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
 import { Toaster } from "@/components/ui/toaster";
+import { DevIndicators } from "@/components/DevIndicators";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -51,7 +51,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <Toaster />
-            <TailwindIndicator />
+            <DevIndicators />
           </ThemeProvider>
         </ReactQueryProvider>
       </body>
