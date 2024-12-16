@@ -5,49 +5,66 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { searchBarSchema } from "@/schema/searchBarSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 export const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const q = searchParams.get("q") || "";
-  const [query, setQuery] = useState(q);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const form = useForm<z.infer<typeof searchBarSchema>>({
+    resolver: zodResolver(searchBarSchema),
+    defaultValues: {
+      query: "",
+    },
+  });
 
-    if (query) {
-      // add search params to the URL
+  const onSubmit = (values: z.infer<typeof searchBarSchema>) => {
+    if (values.query === "") {
+      router.push("/");
+    } else {
       const searchParams = new URLSearchParams();
-      searchParams.set("q", query);
+      searchParams.set("q", values.query);
       searchParams.set("p", "1");
       router.push(`/?${searchParams.toString()}`);
-    } else {
-      // remove search params from the URL
-      router.push("/");
-      return;
     }
+    return;
   };
 
   return (
     <div className="sticky top-16 z-10 w-full items-center bg-background px-4 pb-5 pt-4">
-      <form
-        onSubmit={handleSubmit}
-        className="flex items-center justify-center gap-2"
-      >
-        <Input
-          autoFocus
-          id="search"
-          type="text"
-          placeholder="Les Misérables, Victor Hugo..."
-          className="max-w-lg"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <Button type="submit">
-          <Search />
-          <span className="hidden font-bold sm:block">Search</span>
-        </Button>
-      </form>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex items-center justify-center gap-2"
+        >
+          <FormField
+            control={form.control}
+            name="query"
+            render={({ field }) => (
+              <FormItem className="w-full max-w-lg">
+                <FormControl>
+                  <Input
+                    {...field}
+                    autoFocus
+                    id="query"
+                    type="text"
+                    placeholder="Les Misérables, Victor Hugo..."
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <Button type="submit">
+            <Search />
+            <span className="hidden font-bold sm:block">Search</span>
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };

@@ -18,7 +18,7 @@ const NotFound = () => {
           <Button asChild size="lg" className="font-bold">
             <Link href="/">
               <Home />
-              Return Home
+              Back Home
             </Link>
           </Button>
         </CardContent>
