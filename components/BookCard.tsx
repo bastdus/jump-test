@@ -13,6 +13,7 @@ import Link from "next/link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "./ui/skeleton";
 
 type BookCardProps = {
   book: Book;
@@ -62,4 +63,21 @@ export const BookCard = ({ book, delay = 0 }: BookCardProps) => {
       </CardFooter>
     </Card>
   );
+};
+
+export const BookCardSkeleton = ({ repeat }: { repeat: number }) => {
+  return [...Array(repeat)].map((_, index) => (
+    <Skeleton
+      key={index}
+      className="flex h-full flex-col overflow-hidden rounded-xl"
+    >
+      <Skeleton className="h-52" />
+      <div className="flex flex-col gap-2 p-4">
+        <Skeleton className="h-8 w-5/6" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="mb-8 h-2 w-8" />
+        <Skeleton className="h-10 w-full" />
+      </div>
+    </Skeleton>
+  ));
 };

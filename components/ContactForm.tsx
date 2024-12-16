@@ -100,7 +100,7 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="font-bold">
+        <Button type="submit" className="w-full font-bold">
           <SendIcon />
           Send Message
         </Button>
