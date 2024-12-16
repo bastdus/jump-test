@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { Book, LibraryBig, Mail, MenuIcon, X } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +30,7 @@ export const Menu = () => {
   ];
 
   return (
-    <header className="fixed left-0 top-0 z-10 h-16 w-full flex-row items-center justify-between border-b bg-background px-4">
+    <header className="fixed left-0 top-0 z-20 h-16 w-full flex-row items-center justify-between border-b bg-background px-4">
       <div className="flex h-full items-center justify-start gap-4 text-2xl text-primary">
         <Book />
         <Link href="/" className="font-bold">

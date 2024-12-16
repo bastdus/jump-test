@@ -5,7 +5,6 @@ import { Menu } from "@/components/Menu";
 import { Footer } from "@/components/Footer";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
 import { Toaster } from "@/components/ui/toaster";
-import { DevIndicators } from "@/components/DevIndicators";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -51,7 +50,6 @@ export default function RootLayout({
             </main>
             <Footer />
             <Toaster />
-            <DevIndicators />
           </ThemeProvider>
         </ReactQueryProvider>
       </body>
