@@ -13,7 +13,7 @@ const NotFound = () => {
             404
           </h1>
           <p className="text-center text-xl text-muted-foreground">
-            Oops! The page you're looking for has vanished.
+            Oops! The page you&apos;re looking for has vanished.
           </p>
           <Button asChild size="lg" className="font-bold">
             <Link href="/">
