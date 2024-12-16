@@ -1,4 +1,4 @@
-import { Book } from "@/types/book";
+import { Book, BookDetails } from "@/types/book";
 import { SearchResponse } from "@/types/search";
 
 const API_BASE_URL = "https://openlibrary.org";
@@ -45,15 +45,10 @@ export const searchBooks = async (query: string, page: number = 1) => {
  */
 export const fetchBook = async (key: string) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/${key}.json`);
+    const response = await fetch(`${API_BASE_URL}/works/${key}.json`);
 
-    if (!response.ok) {
-      throw new Error(
-        `Http error on 'fetchBook' query. Status: ${response.status}`,
-      );
-    }
+    const data: BookDetails = await response.json();
 
-    const data = await response.json();
     return data;
   } catch (error) {
     throw new Error(`Error on 'fetchBook' query: ${error}`);

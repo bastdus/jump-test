@@ -3,13 +3,11 @@ import { DevIndicators } from "@/components/DevIndicators";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { BookDetails } from "@/types/book";
+import { fetchBook } from "@/lib/queries";
 import Image from "next/image";
 
 const BookPage = async ({ params: { id } }: { params: { id: string } }) => {
-  const bookResponse = await fetch(`https://openlibrary.org/works/${id}.json`);
-  const bookDetails = (await bookResponse.json()) as BookDetails;
-
+  const bookDetails = await fetchBook(id);
   const authorKey = bookDetails.authors[0].author.key;
   const authorResponse = await fetch(
     `https://openlibrary.org${authorKey}.json`,
