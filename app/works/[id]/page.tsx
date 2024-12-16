@@ -38,7 +38,7 @@ const BookPage = async ({ params: { id } }: { params: { id: string } }) => {
       <div className="-mt-12 lg:flex lg:h-[calc(100vh-4rem)] lg:flex-row">
         {/* Image Section */}
         <div className="relative h-[calc(100vh/2)] w-full lg:h-full lg:w-1/2">
-          <div className="absolute left-4 top-4 z-10">
+          <div className="fixed left-2 top-20 z-10 lg:absolute lg:-left-2 lg:top-4">
             <BackNavigationButton />
           </div>
 
