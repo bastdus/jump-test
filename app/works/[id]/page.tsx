@@ -1,11 +1,8 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
 import { BookDetails } from "@/types/book";
 import Image from "next/image";
-import Link from "next/link";
 
 const BookPage = async ({ params: { id } }: { params: { id: string } }) => {
   const bookResponse = await fetch(`https://openlibrary.org/works/${id}.json`);
