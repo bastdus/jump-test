@@ -51,42 +51,38 @@ const BookPage = async ({ params: { id } }: { params: { id: string } }) => {
         </div>
 
         {/* Content Section */}
-        <div className="flex w-full flex-col lg:h-full lg:w-1/2">
-          <ScrollArea className="px-6 lg:px-12">
-            <div className="space-y-6 py-6">
-              <div>
-                <h1 className="text-4xl font-bold tracking-tight lg:text-6xl">
-                  {bookDetails.title}
-                </h1>
-                <p className="mt-2 text-xl text-muted-foreground lg:text-2xl">
-                  {authorDetails.name}
-                </p>
-              </div>
+        <ScrollArea className="w-full px-6 lg:h-full lg:w-1/2 lg:px-8">
+          <div className="space-y-4 py-6">
+            <h1 className="line-clamp-2 text-4xl font-bold tracking-tight lg:text-6xl">
+              {bookDetails.title}
+            </h1>
+            <p className="mt-2 line-clamp-2 text-xl text-muted-foreground lg:text-2xl">
+              {authorDetails.name}
+            </p>
 
-              <Badge variant="secondary" className="rounded-full text-base">
-                {bookDetails.first_publish_date}
-              </Badge>
+            <Badge variant="secondary" className="rounded-full text-base">
+              {bookDetails.first_publish_date}
+            </Badge>
 
-              <Separator />
+            <Separator />
 
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold">Description</h2>
-                {description ? (
-                  description.map((desc, index) => (
-                    <p
-                      key={index}
-                      className="text-lg leading-relaxed text-muted-foreground"
-                    >
-                      {desc}
-                    </p>
-                  ))
-                ) : (
-                  <p>No description available</p>
-                )}
-              </div>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold">Description</h2>
+              {description ? (
+                description.map((desc, index) => (
+                  <p
+                    key={index}
+                    className="text-lg leading-relaxed text-muted-foreground"
+                  >
+                    {desc}
+                  </p>
+                ))
+              ) : (
+                <p>No description available</p>
+              )}
             </div>
-          </ScrollArea>
-        </div>
+          </div>
+        </ScrollArea>
       </div>
 
       <DevIndicators />
