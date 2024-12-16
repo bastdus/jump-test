@@ -9,7 +9,7 @@ import ContactForm from "@/components/ContactForm";
 
 const ContactPage = () => {
   return (
-    <Card className="mx-auto max-w-2xl">
+    <Card className="animate-apparition mx-auto max-w-2xl">
       <CardHeader>
         <CardTitle className="text-2xl font-bold">Contact Us</CardTitle>
         <CardDescription>

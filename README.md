@@ -80,4 +80,4 @@ const queryClient = new QueryClient({
 
 ## ⏱️ Estimated time
 
-To complete this project, it took me around **XX hours**.
+To complete this project, it took me around **8 hours**.

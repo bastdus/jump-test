@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const Loading = () => {
   return (
-    <div className="-mt-12 flex h-[calc(100vh-4rem)] flex-col gap-4 p-4 lg:flex-row">
+    <div className="animate-apparition -mt-12 flex h-[calc(100vh-4rem)] flex-col gap-4 p-4 lg:flex-row">
       <Skeleton className="h-[calc(100vh/2)] w-full lg:h-full lg:w-1/2" />
       <div className="flex w-full flex-col lg:h-full lg:w-1/2">
         <Skeleton className="p-4 lg:h-full lg:px-12 lg:py-6">
