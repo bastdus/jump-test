@@ -48,8 +48,8 @@ export const BookCard = ({ book, delay = 0 }: BookCardProps) => {
         </AspectRatio>
       </CardHeader>
       <CardContent className="flex-grow p-4">
-        <CardTitle className="line-clamp-2">{book.title}</CardTitle>
-        <CardDescription className="line-clamp-2">
+        <CardTitle className="line-clamp-2 leading-5">{book.title}</CardTitle>
+        <CardDescription className="line-clamp-2 leading-5">
           {book.author_name}
         </CardDescription>
         <p className="text-xs text-muted-foreground">

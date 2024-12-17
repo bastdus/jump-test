@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { searchBarSchema } from "@/schema/searchBarSchema";
@@ -12,11 +12,12 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 export const SearchBar = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const form = useForm<z.infer<typeof searchBarSchema>>({
     resolver: zodResolver(searchBarSchema),
     defaultValues: {
-      query: "",
+      query: searchParams.get("q") || "",
     },
   });
 
