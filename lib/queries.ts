@@ -1,3 +1,4 @@
+import { AuthorDetails } from "@/types/author";
 import { Book, BookDetails } from "@/types/book";
 import { SearchResponse } from "@/types/search";
 
@@ -42,12 +43,29 @@ export const searchBooks = async (query: string, page: number = 1) => {
 
 /**
  * Use for fetching book details from OpenLibrary API
+ * @param key - ex: "OL45883W"
  */
 export const fetchBook = async (key: string) => {
   try {
     const response = await fetch(`${API_BASE_URL}/works/${key}.json`);
 
     const data: BookDetails = await response.json();
+
+    return data;
+  } catch (error) {
+    throw new Error(`Error on 'fetchBook' query: ${error}`);
+  }
+};
+
+/**
+ * Use for fetching auhtor details from OpenLibrary API
+ * @param key - ex: "/authors/OL34184A"
+ */
+export const fetchAuthor = async (key: string) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}${key}.json`);
+
+    const data: AuthorDetails = await response.json();
 
     return data;
   } catch (error) {

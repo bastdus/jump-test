@@ -3,16 +3,14 @@ import { DevIndicators } from "@/components/DevIndicators";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { fetchBook } from "@/lib/queries";
+import { fetchAuthor, fetchBook } from "@/lib/queries";
 import Image from "next/image";
 
 const BookPage = async ({ params: { id } }: { params: { id: string } }) => {
   const bookDetails = await fetchBook(id);
   const authorKey = bookDetails.authors[0].author.key;
-  const authorResponse = await fetch(
-    `https://openlibrary.org${authorKey}.json`,
-  );
-  const authorDetails = await authorResponse.json();
+
+  const authorDetails = await fetchAuthor(authorKey);
 
   const regex = /\r\n|\n|\r|\r\n|\n\r/g;
 
