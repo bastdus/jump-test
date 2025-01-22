@@ -18,7 +18,7 @@ The website is hosted on [Vercel](https://vercel.com/).
 
 - [Tailwind CSS](https://tailwindcss.com/) for styling.
 - [Shadcn/ui](https://ui.shadcn.com/) for UI components.
-- [Theme](https://ui.jln.dev/) choose theme and apply it on `global.css`
+- [Theme](https://ui.jln.dev/) choose theme and apply it on `app/global.css`
 - [lucide-react](https://lucide.dev/) for icons.
 
 **Tools:**
